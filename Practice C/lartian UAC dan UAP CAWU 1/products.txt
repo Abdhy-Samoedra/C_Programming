@@ -1,0 +1,3 @@
+baju#5000
+sarung wadimor#40000
+sepatu#5000
