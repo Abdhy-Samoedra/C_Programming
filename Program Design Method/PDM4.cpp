@@ -4,7 +4,7 @@
 int calculate(int a,int b,int c,int d,int e,int f)
 {
     int sum = a+b+c+d+e+f;
-    printf(" test Biaya bulanan adalah : %d\n",sum);
+    printf("Biaya bulanan adalah : %d\n",sum);
     printf("Biaya tahunan adalah : %d\n",sum*12);
 }
 
