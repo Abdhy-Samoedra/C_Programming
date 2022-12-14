@@ -2,5 +2,5 @@
 
 int main()
 {
-    printf("tes");
+    printf("tes 123");
 }
