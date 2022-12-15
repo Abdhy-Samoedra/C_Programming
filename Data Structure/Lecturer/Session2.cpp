@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Single Linked List
+
 // head akan selalu terdapat pada data yang terakhir kita insert
 
 struct node
@@ -78,14 +80,18 @@ void deleteNode(int val)
     }
 }
 
+
+
 int main()
 {
-    insertNode(12);
-    insertNode(2);
+    insertNode(15);
+    insertNode(20);
+    insertNode(25);
     insertNode(5);
-    insertNode(1);
 
-    deleteNode(2);
+    deleteNode(5);
+    deleteNode(15);
+    deleteNode(35);
 
     dsiplayAll();
 }
