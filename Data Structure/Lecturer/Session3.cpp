@@ -55,6 +55,13 @@ void deleteNode(int val)
 {
     struct node *curr = head;
 
+    if (head == NULL)
+    {
+        printf("this LL empty");
+        return;
+    }
+    
+
     // jika menghapus satu satunya node yang ada dalam linked list
     if (head->val == val && head == tail)
     {
