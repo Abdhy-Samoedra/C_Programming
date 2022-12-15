@@ -65,14 +65,16 @@ void deleteNode(int val)
     // jika yang mau dihapus ada di node kedua atau lebih
     else
     {
-        while (curr->next->val != val)
+        while (curr->next != NULL && curr->next->val != val)
         {
             curr = curr->next;
         }
-
-        struct node *del = curr->next;
-        curr->next = del->next;
-        free(del);
+        if (curr->next != NULL)
+        {
+            struct node *del = curr->next;
+            curr->next = del->next;
+            free(del);
+        }
     }
 }
 
