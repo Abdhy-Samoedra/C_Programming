@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//double linkeed list
+
 struct node
 {
     int val;
