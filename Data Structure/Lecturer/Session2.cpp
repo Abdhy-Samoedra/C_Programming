@@ -39,7 +39,7 @@ void insertNode(int val)
     }
 }
 
-void dsiplayAll()
+void displayAll()
 {
     // membuat pointer untuk menunjuk data pertama
     struct node *curr = head;
@@ -93,5 +93,5 @@ int main()
     deleteNode(15);
     deleteNode(35);
 
-    dsiplayAll();
+    displayAll();
 }

@@ -9,7 +9,7 @@ struct Food
     struct Food *next; // menyimpan alamat dari data selanjutnya
 } *head = NULL, *tail = NULL;
 
-struct Food *createFood(int price)
+struct Food *createFood(int price) // functiin untuk membuat data
 {
     // pesan dulu memeori sebesar Food* dengan malloc
     // aga bisa digunakan harus di typecast dulu void* jadi Food*
@@ -36,13 +36,33 @@ void pushHead(int price)
     }
 }
 
-void pushTail()
+void pushTail(int price)
 {
-
+    struct Food *newNode = createFood(price);
+    
+    if (!head)
+    {
+        head = tail = newNode;
+    }
+    
 }
 
-void pushMid()
+void pushMid(int price)
 {
+    if (head || price < head->price)
+    {
+        pushHead(price);
+    }else if (price >= tail->price)
+    {
+        pushTail(price);
+    }else
+    {
+        struct Food *newFood = createFood(price);
+        struct Food = 
+    }
+    
+    
+    
 }
 
 void printFoods()
@@ -57,6 +77,7 @@ void printFoods()
         // jelan ke data sebeklumnya
         curr = curr->next;
     }
+    return;
     
 }
 
