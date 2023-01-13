@@ -22,7 +22,7 @@ void dummy(char motherBoard[], char processor[], char VGA[], int RAM, double pri
 
     currentCount++;
 }
-
+  
 void displayData()
 {
     if (currentCount == 0)
