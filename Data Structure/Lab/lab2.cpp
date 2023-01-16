@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// SINGEL LINKED LIST
+
 // define data / node
 
 struct Food
@@ -17,7 +19,7 @@ struct Food *createFood(int price) // functiin untuk membuat data
     // assign value
     food->price = price;
     food->next = NULL;
- 
+
     return food;
 };
 
@@ -38,31 +40,40 @@ void pushHead(int price)
 
 void pushTail(int price)
 {
-    struct Food *newNode = createFood(price);
-    
+    struct Food *newFood = createFood(price);
+
     if (!head)
     {
-        head = tail = newNode;
+        head = tail = newFood;
     }
-    
+    else
+    {
+        tail->next = newFood;
+        tail = newFood;
+    }
 }
 
 void pushMid(int price)
 {
-    if (head || price < head->price)
+    if (head != 0 || price < head->price)
     {
         pushHead(price);
-    }else if (price >= tail->price)
+    }
+    else if (price >= tail->price)
     {
         pushTail(price);
-    }else
+    }
+    else
     {
         struct Food *newFood = createFood(price);
-        struct Food = 
+        struct Food *curr = head;
+        while (curr->next != 0 && curr->next->price < price)
+        {
+            curr = curr->next;
+        }
+        newFood->next = curr->next;
+        curr->next = newFood;
     }
-    
-    
-    
 }
 
 void printFoods()
@@ -73,18 +84,108 @@ void printFoods()
     while (curr != NULL)
     {
         // print data nya
-        printf("%d",curr->price);
+        printf("%d", curr->price);
         // jelan ke data sebeklumnya
         curr = curr->next;
     }
     return;
-    
+}
+
+void popHead()
+{
+    if (!head)
+    {
+        return;
+    }
+    else if (head == tail)
+    {
+        free(head);
+        head = tail = NULL;
+    }
+    else
+    {
+        struct Food *temp = head->next; // calon head barunya (data di sebelah head)
+        free(head);                     // deallocate memori address dari head yang lama
+        head = temp;                    // head barunya adalah head->nect (temp)
+    }
+}
+
+void popTail()
+{
+    if (!head)
+    {
+        return;
+    }
+    else if (head == tail)
+    {
+        free(head);
+        head = tail = NULL;
+    }
+    else
+    {
+        struct Food *curr = head;
+        // jalan sampai data sebelum tail
+        while (curr->next != tail)
+        {
+            curr = curr->next;
+        }
+
+        free(tail);        // deallocate address tail
+        curr->next = NULL; // curr nunjuk NULL (karena udah ga nunjuk tail, udah ga ada tail)
+        tail = curr;       // curr jadi tail yang baru
+    }
+}
+
+void popMid(int price)
+{
+    if (!head)
+    {
+        return;
+    }
+    else if (price == head->price)
+    {
+        popHead();
+    }
+    else if (price == tail->price)
+    {
+        popTail();
+    }
+    else
+    {
+        struct Food *curr = head;
+        // selama data yang mau dicari belum ketemu
+
+        while (curr->next != NULL && curr->next->price != price)
+        {
+            curr = curr->next;
+        }
+        if (curr->next == NULL || curr->next->price != price)
+        {
+            printf("\nData to be deleted is not found!\n");
+        }
+        else
+        {
+            struct Food *temp = curr->next->next;
+            free(curr->next);
+            curr->next = temp;
+        }
+    }
 }
 
 int main()
 {
-    pushHead(300000);
-    printf("%d\n", head->price);
-    // struct Food *food = createFood(30000);
-    // printf("%d\n", food->price);
+    pushHead(30000);
+    pushHead(28000);
+    pushHead(17000);
+    pushMid(25000);
+    pushMid(10000);
+    printFoods();
+
+    popMid(28000);
+    printf("\n");
+    printFoods();
+
+    popMid(16000);
+    printf("\n");
+    printFoods();
 }

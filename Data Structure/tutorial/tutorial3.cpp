@@ -67,7 +67,7 @@ void popHead()
     {
         printf("ga ada data nih");
     }
-    
+
     struct data *del = head;
     head = head->next;
     free(del);
@@ -80,16 +80,15 @@ int main()
     push("Juki", "2602189837", 3.4); // 4
     push("Andi", "2602189809", 4.0); // 1
     push("Romi", "2602189870", 2.9); // 6
-    push("Tono", "2602189839", 3.9); //2
+    push("Tono", "2602189839", 3.9); // 2
 
-   
     display();
-     printf("\n");
+    printf("\n");
     printf("\n");
 
     popHead();
     popHead();
     display();
 
-        return 0;
+    return 0;
 }

@@ -19,7 +19,7 @@ struct node *newNode(int val)
     return temp;
 }
 
-void insertTail(int val)
+void insertTail(int val) 
 {
     struct node *temp = newNode(val);
 
