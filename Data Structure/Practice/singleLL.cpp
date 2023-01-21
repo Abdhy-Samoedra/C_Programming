@@ -15,7 +15,7 @@ struct data *createData(int price)
     Data->next = 0;
 
     return Data;
-}
+}   
 
 void pushHead(int price)
 {
@@ -26,7 +26,7 @@ void pushHead(int price)
     }
     else
     {
-        newHead->next = head;
+        newHead->next = head; // ini karena single linked list push head menganut prinsip stacked, first in langsung diatas
         head = newHead;
     }
 }
@@ -48,7 +48,7 @@ void pushTail(int price)
 
 void pushMid(int price)
 {
-    if (head != 0 || price < head->price)
+    if (head == 0 || price < head->price)
     {
         pushHead(price);
     }
@@ -77,8 +77,9 @@ void displayAll()
     {
         printf("%d ", curr->price);
         curr = curr->next;
+        printf("\n");
     }
-    printf("\n");
+    
 }
 
 void popHead()
@@ -149,7 +150,7 @@ void popMid(int price)
 
         if (curr->next == 0 || curr->next->price != price)
         {
-            printf("data tidak ada");
+            printf("data tidak ketemu\n");
         }
         else
         {
@@ -162,17 +163,24 @@ void popMid(int price)
 
 int main()
 {
+    // NOTE PUSH TAIL PUSH HEAD TIDAK BISA DICAMPUR DENGAN PUSHMID/PUSHVALUE
     pushTail(4);
     pushHead(77);
-    pushTail(5);
+    // pushTail(5);
     pushTail(9);
-    pushTail(2);
+    // pushTail(2);
     pushHead(7);
-    // push mid, untuk push mid ini harus ada minimal 1 head dulu
     
-    pushMid(6);
-    pushMid(8);
+    // pushMid(6);
+    // pushMid(8);
 
+    popMid(4);
+    popHead();
+    popTail();
+    // popMid(11);
+    // popHead();
+    
     popMid(77);
+    popMid(11);
     displayAll();
 }

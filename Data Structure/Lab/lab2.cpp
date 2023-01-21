@@ -55,7 +55,7 @@ void pushTail(int price)
 
 void pushMid(int price)
 {
-    if (head != 0 || price < head->price)
+    if (head == 0 || price < head->price)
     {
         pushHead(price);
     }
@@ -174,18 +174,18 @@ void popMid(int price)
 
 int main()
 {
-    pushHead(30000);
-    pushHead(28000);
-    pushHead(17000);
+    // pushHead(30000);
+    // pushHead(28000);
+    // pushHead(17000);
     pushMid(25000);
     pushMid(10000);
     printFoods();
 
-    popMid(28000);
-    printf("\n");
-    printFoods();
+    // popMid(28000);
+    // printf("\n");
+    // printFoods();
 
-    popMid(16000);
-    printf("\n");
-    printFoods();
+    // popMid(16000);
+    // printf("\n");
+    // printFoods();
 }
