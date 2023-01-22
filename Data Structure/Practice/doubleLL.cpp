@@ -62,12 +62,12 @@ void pushValue(Data **head, Data **tail, Data *newData)
         struct Data *curr = *head;
         while (strcmp(newData->name, curr->next->name) >= 0)
         {
-            curr = curr->next;
+            curr = curr->next; // ini looping untuk mengetahui posisi dari data yang akan dimasukkan, looping ini menghasilkan data yang urutannya berada sebelum data yang akan dimasukkan
         }
-        newData->next = curr->next;
-        curr->next->prev = newData;
-        newData->prev = curr;
-        curr->next = newData;
+        newData->next = curr->next; // mindahin data setelah current, menjadi data setelah data baru
+        curr->next->prev = newData;  // menunjuk posisi data setalah current pada saat posisi awal, lalu ditunjuk prev sebagai lokasi/alamatnya saja lalu prev di isi data baru
+        newData->prev = curr; // prev dari data baru menjadi current
+        curr->next = newData; // next dari current jadi data baru
     }
 }
 
