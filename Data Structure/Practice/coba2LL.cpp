@@ -5,15 +5,13 @@
 struct Data
 {
     char name[20];
-    int age;
     struct Data *next, *prev;
 };
 
-struct Data *createData(char name[], int age)
+struct Data *createNewData(char name[])
 {
     struct Data *newData = (struct Data *)malloc(sizeof(struct Data));
     strcpy(newData->name, name);
-    newData->age = age;
     newData->next = newData->prev = 0;
 
     return newData;
@@ -49,25 +47,25 @@ void pushTail(Data **head, Data **tail, Data *newData)
 
 void pushValue(Data **head, Data **tail, Data *newData)
 {
-    if (*head == 0 || strcmp(newData->name, (*head)->name) < 0) // jika urutan abjad lebih dari head, maka push head
+    if (*head == 0 || strcmp(newData->name, (*head)->name) < 0)
     {
         pushHead(head, tail, newData);
     }
-    else if (strcmp(newData->name, (*tail)->name) >= 0) // jika urutan abjad lebih dari tail, maka pushtail
+    else if (*tail == 0 || strcmp(newData->name, (*tail)->name) >= 0)
     {
         pushTail(head, tail, newData);
     }
     else
     {
         struct Data *curr = *head;
-        while (strcmp(newData->name, curr->next->name) >= 0)
+        while (curr->next != 0 && strcmp(newData->name, curr->next->name) >= 0)
         {
-            curr = curr->next; // ini looping untuk mengetahui posisi dari data yang akan dimasukkan, looping ini menghasilkan data yang urutannya berada sebelum data yang akan dimasukkan
+            curr = curr->next;
         }
-        newData->next = curr->next; // mindahin data setelah current, menjadi data setelah data baru
-        curr->next->prev = newData;  // menunjuk posisi data setalah current pada saat posisi awal, lalu ditunjuk prev sebagai lokasi/alamatnya saja lalu prev di isi data baru
-        newData->prev = curr; // prev dari data baru menjadi current
-        curr->next = newData; // next dari current jadi data baru
+        newData->next = curr->next;
+        curr->next->prev = newData;
+        newData->prev = curr;
+        curr->next = newData;
     }
 }
 
@@ -75,7 +73,7 @@ void popHead(Data **head, Data **tail)
 {
     if (*head == 0)
     {
-        printf("tidak ada data");
+        printf("ga ada data");
     }
     else if (*head == *tail)
     {
@@ -94,7 +92,7 @@ void popTail(Data **head, Data **tail)
 {
     if (*tail == 0)
     {
-        printf("tidak ada data");
+        printf("ga ada data");
     }
     else if (*head == *tail)
     {
@@ -115,11 +113,11 @@ void popValue(Data **head, Data **tail, char name[])
     {
         printf("tidak ada data");
     }
-    else if (strcmp(name, (*head)->name) == 0) // jika ternyata valuenya di head, maka pophead
+    else if (strcmp(name, (*head)->name) == 0)
     {
         popHead(head, tail);
     }
-    else if (strcmp(name, (*tail)->name) == 0) // jika ternyata valuenya di tail maka, pop tail
+    else if (strcmp(name, (*tail)->name) == 0)
     {
         popTail(head, tail);
     }
@@ -132,9 +130,8 @@ void popValue(Data **head, Data **tail, char name[])
         }
         if (curr->next == 0 || strcmp(name, curr->name) != 0)
         {
-            printf("%s data tidak ketemu", name);
+            printf("data tidak ketemu");
         }
-
         curr->next->prev = curr->prev;
         curr->prev->next = curr->next;
         free(curr);
@@ -146,10 +143,9 @@ void popAll(Data **head, Data **tail)
 {
     while (*head != 0)
     {
-        popHead(head,tail);
+        popHead(head, tail);
     }
-    printf("berhasil terhapus semua\n");
-    
+    printf("berhasil terhaspu semua\n");
 }
 
 void display(Data *head)
@@ -157,39 +153,40 @@ void display(Data *head)
     struct Data *curr = head;
     while (curr != 0)
     {
-        printf("%-10s | %d\n", curr->name, curr->age);
+        printf("%s\n", curr->name);
         curr = curr->next;
     }
 }
 
 int main()
 {
-    struct Data *tail = 0, *head = 0;
+    struct Data *head = 0, *tail = 0;
 
-    // NOTE PUSHHEAD DAN PUSHHEAD TIDAK BISA DICAMPUR DENGAN PUSHVALUE
+    // pushHead(&head, &tail, createNewData("agus"));
+    // pushHead(&head, &tail, createNewData("budi"));
+    // pushTail(&head, &tail, createNewData("agung"));
+    // pushTail(&head, &tail, createNewData("samu"));
 
-    // pushHead(&head, &tail, createData("samudra", 99));
-    // pushHead(&head, &tail, createData("joel", 44));
-    // pushTail(&head, &tail, createData("jordy", 90));
-    // pushTail(&head, &tail, createData("alex", 34));
-
-    pushValue(&head, &tail, createData("jordy", 90));
-    pushValue(&head, &tail, createData("alex", 34));
-    pushValue(&head, &tail, createData("samuel", 90));
-    pushValue(&head, &tail, createData("andro", 34));
-
-    // display(head);
-    // printf("\n");
+    pushValue(&head, &tail, createNewData("agus"));
+    pushValue(&head, &tail, createNewData("budi"));
+    pushValue(&head, &tail, createNewData("agung"));
+    pushValue(&head, &tail, createNewData("samu"));
+    pushValue(&head, &tail, createNewData("rusi"));
+    pushValue(&head, &tail, createNewData("sandrra"));
+    display(head);
+    printf("\n");
 
     // popHead(&head, &tail);
-    // printf("\n");
     // display(head);
+    // printf("\n");
 
     // popTail(&head, &tail);
+    // display(head);
     // printf("\n");
-    
-    popAll(&head,&tail);
-    popValue(&head, &tail,"jordy");
+
+    popAll(&head, &tail);
+
+    popValue(&head, &tail, "sandrra");
     display(head);
-    
+    printf("\n");
 }
