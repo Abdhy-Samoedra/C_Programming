@@ -64,6 +64,7 @@ void pushValue(Data **head, Data **tail, Data *newData)
         {
             curr = curr->next; // ini looping untuk mengetahui posisi dari data yang akan dimasukkan, looping ini menghasilkan data yang urutannya berada sebelum data yang akan dimasukkan
         }
+        // curr adalah data yang posisinya sebelum data yang akan di push
         newData->next = curr->next; // mindahin data setelah current, menjadi data setelah data baru
         curr->next->prev = newData;  // menunjuk posisi data setalah current pada saat posisi awal, lalu ditunjuk prev sebagai lokasi/alamatnya saja lalu prev di isi data baru
         newData->prev = curr; // prev dari data baru menjadi current
@@ -130,6 +131,8 @@ void popValue(Data **head, Data **tail, char name[])
         {
             curr = curr->next;
         }
+        // berbeda deng na saat push, di pop curr adalah data itu sendiri
+
         if (curr->next == 0 || strcmp(name, curr->name) != 0)
         {
             printf("%s data tidak ketemu", name);
