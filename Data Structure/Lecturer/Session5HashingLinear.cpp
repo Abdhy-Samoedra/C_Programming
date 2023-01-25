@@ -16,7 +16,7 @@ struct data
 // membuat hash tablenya
 struct data *dataArr[maxArrSize];
 
-// membut hash function, contoh inin menggunakan functiion DIVISION
+// membut hash function, contoh ini menggunakan function DIVISION METHOD
 int hashFunct(char heroName[]) // parameter nya gunakan variabel paling unique (disini name karena hero dota name gaada yang sama)
 {
     // disini first dan last terserah kita, bisa juga menggunakan semua hruf dalam katanya apabila terjadi kesamaan antara huruf awal dan akhir antara kata satu dengn kata lainnnya
@@ -73,6 +73,7 @@ void insert(char heroName[], char heroType[], int level)
         }
     }
 }
+
 
 void display()
 {

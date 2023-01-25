@@ -9,6 +9,8 @@ struct data
     struct data *next;
 } *head = 0; //  karena pada stack hanya memakai head
 
+// stack adalah first in last out, maka dari itu hanya ada head saja
+
 void push(char name[], int age)
 {
     // create new node
