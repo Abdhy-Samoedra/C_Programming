@@ -207,22 +207,30 @@ int main()
     insert(root, 35);
     insert(root, 40);
 
-    displayInfix(root);
-    printf("\n");
-    del(root, 20);
-    displayInfix(root);
-    printf("\n");
     del(root, 10);
+    del(root, 20);
+    del(root, 9);
+    del(root, 11);
+    del(root, 1);
+    del(root, 12);
+    del(root, 25);
+
     displayInfix(root);
-    printf("\n");
-    del(root, 40);
-    displayInfix(root);
-    printf("\n");
-    del(root, 111);
-    displayInfix(root);
-    printf("\n");
-    find(root, 5);
-    del(root, 1112);
-    find(root, 9);
+    // printf("\n");
+    // del(root, 20);
+    // displayInfix(root);
+    // printf("\n");
+    // del(root, 10);
+    // displayInfix(root);
+    // printf("\n");
+    // del(root, 40);
+    // displayInfix(root);
+    // printf("\n");
+    // del(root, 111);
+    // displayInfix(root);
+    // printf("\n");
+    // find(root, 5);
+    // del(root, 1112);
+    // find(root, 9);
     return 0;
 }
