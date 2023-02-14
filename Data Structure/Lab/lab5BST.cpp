@@ -108,6 +108,7 @@ Data *deleteAll(Data *curr)
     {
         curr = deleteData(curr, curr->val);
     }
+    printf("delete all success\n");
     return curr;
 }
 
@@ -161,16 +162,16 @@ int main()
     displayPostfix(root);
     printf("\n");
 
-    root = deleteData(root, (20));
-    root = deleteData(root, (10));
-    root = deleteData(root, (5));
-    root = deleteData(root, (15));
-    root = deleteData(root, (14));
-    root = deleteData(root, (16));
-    root = deleteData(root, (30));
-    root = deleteData(root, (40));
+    // root = deleteData(root, (20));
+    // root = deleteData(root, (10));
+    // root = deleteData(root, (5));
+    // root = deleteData(root, (15));
+    // root = deleteData(root, (14));
+    // root = deleteData(root, (16));
+    // root = deleteData(root, (30));
+    // root = deleteData(root, (40));
 
-    // deleteAll(root);
+    root = deleteAll(root);
 
     printf("infix : ");
     displayInfix(root);

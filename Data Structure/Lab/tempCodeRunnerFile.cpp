@@ -1,2 +1,2 @@
 
-    root = deleteData(root, (40));
+    root = deleteData(root, (16));
