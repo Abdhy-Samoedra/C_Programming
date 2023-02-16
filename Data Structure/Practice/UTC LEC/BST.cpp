@@ -88,31 +88,29 @@ Data *searchData(Data *curr, int value)
     if (curr == 0)
     {
         return curr;
-    }else if (value == curr->value)
+    }
+    else if (value == curr->value)
     {
         return curr;
-    }else if (value < curr->value)
-    {
-        searchData(curr->left,value);
-    }else
-    {
-        searchData(curr->right,value);
     }
-    
-    
-    
-    
+    else if (value < curr->value)
+    {
+        searchData(curr->left, value);
+    }
+    else
+    {
+        searchData(curr->right, value);
+    }
 }
 
-Data* deleteAll(Data *curr)
+Data *deleteAll(Data *curr)
 {
     while (curr != 0)
     {
-        curr = deleteData(curr,curr->value);
+        curr = deleteData(curr, curr->value);
     }
     printf("delete all success\n");
     return curr;
-    
 }
 
 void displayInfix(Data *curr)

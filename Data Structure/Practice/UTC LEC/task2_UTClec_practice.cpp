@@ -23,7 +23,13 @@ struct Customer *insertDataCust(struct Customer *curr, struct Customer *custName
 {
     if (curr == 0)
     {
+        printf("Succesfully add customer\n");
         return custName;
+    }
+    else if (strcmpi(custName->custName, curr->custName) == 0)
+    {
+        printf("Customer already exists! Updated membership\n");
+        strcpy(curr->custMembership, custName->custMembership);
     }
     else if (strcmpi(custName->custName, curr->custName) < 0)
     {
@@ -87,29 +93,6 @@ int searchMembership(struct Membership *curr, char membershipName[])
     }
 }
 
-void searchCustomer(struct Customer *curr, char custName[], char custMembership[])
-{
-    if (curr == 0)
-    {
-        printf("Succesfully add customer\n");
-
-        custRoot = insertDataCust(custRoot, createDataCust(custName, custMembership));
-    }
-    else if (strcmpi(custName, curr->custName) == 0)
-    {
-        printf("Customer already exists! Updated membership\n");
-        strcpy(curr->custName, custName);
-        strcpy(curr->custMembership, custMembership);
-    }
-    else if (strcmpi(custName, curr->custName) < 0)
-    {
-        return searchCustomer(curr->left, custName, custMembership);
-    }
-    else
-    {
-        return searchCustomer(curr->right, custName, custMembership);
-    }
-}
 struct Customer *deleteCustomer(struct Customer *curr, char custName[])
 {
     if (curr == 0)
@@ -220,7 +203,7 @@ int main()
             do
             {
                 printf("input name (3-50 characthers): ");
-                scanf("%s", custName);
+                scanf("%[^\n]", custName);
                 getchar();
             } while (strlen(custName) < 3 || strlen(custName) > 50);
             printf("Our Membership\n");
@@ -240,7 +223,9 @@ int main()
                     printf("Membership not found, Write correctly the membership type\n");
                 }
             } while (cekMembership == 0);
-            searchCustomer(custRoot, custName, custMembership);
+
+            // searchCustomer(custRoot, custName, custMembership);
+            custRoot = insertDataCust(custRoot, createDataCust(custName, custMembership));
 
             break;
         case 2:
