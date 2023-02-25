@@ -110,12 +110,25 @@ void displayStudent(struct Student *curr)
     }
 }
 
+bool cekNIM(char NIM[])
+{
+    int length = strlen(NIM);
+    for (int i = 0; i < length; i++)
+    {
+        if (NIM[i] < '0' || NIM[i] > '9')
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 int main()
 {
-
     int input = 0;
     char name[100];
     char NIM[100];
+    bool cek;
 
     printf("=======================\n");
     printf("Welocome to the College\n");
@@ -132,7 +145,7 @@ int main()
         getchar();
         switch (input)
         {
-        case 1:
+        case 1: 
             do
             {
                 printf("input name (3-50 characthers): ");
@@ -142,9 +155,9 @@ int main()
             do
             {
                 printf("input NIM (8 characther): ");
-                scanf("%[^\n]", NIM);
+                scanf("%s", NIM);
                 getchar();
-            } while (strlen(NIM) != 8);
+            } while (strlen(NIM) != 8 || cekNIM(NIM) == false);
             root = insertDataStudent(root, createDataStudent(name, NIM));
 
             break;

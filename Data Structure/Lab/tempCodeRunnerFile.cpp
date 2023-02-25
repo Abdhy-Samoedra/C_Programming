@@ -1,2 +1,4 @@
+printf("\n");
 
-    root = deleteData(root, (16));
+	deleteFood("Sate Padang");
+	view();
