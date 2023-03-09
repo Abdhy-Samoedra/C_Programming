@@ -93,6 +93,7 @@ struct Student *deleteStudent(struct Student *curr, char name[])
             curr->left = deleteStudent(curr->left, temp->name);
         }
     }
+    return curr;
 }
 
 void displayStudent(struct Student *curr)
