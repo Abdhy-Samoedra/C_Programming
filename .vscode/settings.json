@@ -1,7 +1,10 @@
 {
     "files.associations": {
         "array": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "typeinfo": "cpp",
+        "*.tcc": "cpp",
+        "unordered_map": "cpp"
     },
     "liveServer.settings.port": 5502
 }

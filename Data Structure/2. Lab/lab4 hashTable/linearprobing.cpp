@@ -109,29 +109,33 @@ void view()
 
 int main()
 {
-    insertNode("budi", 20);
-    insertNode("clara", 20);
-    insertNode("abel", 20);
-    insertNode("abdul", 20);
-    insertNode("jull", 20);
-    insertNode("jason", 20);
+    // insertNode("budi", 20);
+    // insertNode("clara", 20);
+    // insertNode("abel", 20);
+    // insertNode("abdul", 20);
+    // insertNode("jull", 20);
+    // insertNode("jason", 20);
 
-    view();
-    printf("\n");
-    deleteNode("clara");
-    deleteNode("abdul");
-    deleteNode("budi");
-    deleteNode("abel");
-    deleteNode("budiman");
-    deleteNode("samu");
-    deleteNode("jull");
-    // for (int i = 0; i < 30; i++)
-    // {
-    //     char name[20];
-    //     sprintf(name, "budi %d", i);
-    //     insertNode(name, 20);
-    // }
-
-    view();
-    return 0;
+    // view();
+    // printf("\n");
+    // deleteNode("clara");
+    // deleteNode("abdul");
+    // deleteNode("budi");
+    // deleteNode("abel");
+    // deleteNode("budiman");
+    // deleteNode("samu");
+    // deleteNode("jull");
+    // // for (int i = 0; i < 30; i++)
+    // // {
+    // //     char name[20];
+    // //     sprintf(name, "budi %d", i);
+    // //     insertNode(name, 20);
+    // // }
+    char name[100];
+    scanf("%s",name);
+    char hasil[100];
+    sprintf(hasil,"%s %d",name,20);
+    printf("%s",hasil);
+    // view();
+    // return 0;
 }
